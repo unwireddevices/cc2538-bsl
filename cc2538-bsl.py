@@ -193,7 +193,7 @@ class FirmwareFile(object):
 class CommandInterface(object):
     ACK_BYTE = 0xCC
     NACK_BYTE = 0x33
-    def open(self, aport='/dev/tty.usbserial-000013FAB', abaudrate=500000):
+    def open(self, aport='/dev/tty.usbserial-000013FAB', abaudrate=115200):
         self.sp = serial.Serial(
             port=aport,
             baudrate=abaudrate,     # baudrate
@@ -915,7 +915,7 @@ def usage():
     -r                       Read
     -l length                Length of read
     -p port                  Serial port (default: first USB-like port in /dev)
-    -b baud                  Baud speed (default: 500000)
+    -b baud                  Baud speed (default: 115200)
     -a addr                  Target address
     -i, --ieee-address addr  Set the secondary 64 bit IEEE address
     --bootloader-active-high Use active high signals to enter bootloader
@@ -933,7 +933,7 @@ if __name__ == "__main__":
 
     conf = {
             'port': 'auto',
-            'baud': 500000,
+            'baud': 115200,
             'force_speed' : 0,
             'address': None,
             'force': 0,
